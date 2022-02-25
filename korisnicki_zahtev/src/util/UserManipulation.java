@@ -50,5 +50,16 @@ public class UserManipulation {
 	public void deleteUser(User user) {
 		users.remove(user);
 	}
+	
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public UserManipulation(List<User> users) {
+		super();
+		this.users = users;
+	}
+	
 
 }
