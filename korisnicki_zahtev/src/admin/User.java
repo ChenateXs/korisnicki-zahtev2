@@ -7,8 +7,8 @@ public class User {
 
 	private final String name;
 	private final String surname;
-	private final String username;
-	private final char[] password;
+	private String username;
+	private char[] password;
 	private final Role role;
 	public User(String name, String surname, String username, char[] password, Role role) {
 		super();
@@ -27,8 +27,14 @@ public class User {
 	public String getUsername() {
 		return username;
 	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public char[] getPassword() {
 		return password;
+	}
+	public void setPassword(char[] password) {
+		this.password = password;
 	}
 	public Role getRole() {
 		return role;
