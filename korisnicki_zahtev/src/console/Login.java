@@ -8,29 +8,20 @@ import java.util.List;
 
 import admin.User;
 
-public class Login implements Runnable{
+public class Login{
 	
 	List<User> allUsers;
+	User currentUser;
 	
-	
-	public Login(ArrayList<User> allUsers) {
+	public Login(List<User> allUsers) {
 		this.allUsers = allUsers;
 	}
 
-	@Override
-	public void run() {
-		boolean LogedIn = LogingIn();
-		while(LogedIn) {
-			
-		}
-		System.out.println(LogedIn);
-	}
-
-	private boolean LogingIn() {
+	public User LogingIn() {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String username;
 		String password;
-		boolean LogedInCorrectly = false;
+		User LogedInCorrectly = null;
 		for(int i = 0;i<4;i++){
 			try {
 				System.out.println("Log In");
@@ -41,8 +32,7 @@ public class Login implements Runnable{
 				password = reader.readLine();
 
 				LogedInCorrectly = checkLogIn(username,password);
-				
-				if(LogedInCorrectly) break;
+				if(LogedInCorrectly != null) {break;}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -50,11 +40,11 @@ public class Login implements Runnable{
 		return LogedInCorrectly;
 	}
 	
-	private boolean checkLogIn(String username, String password) {
+	private User checkLogIn(String username, String password) {
 		for(User u: allUsers) {
-			if(u.getSurname().equals(username)&&u.getPassword().equals(password)) return true;
+			if(u.getUsername().equals(username)&&u.getPassword().equals(password)) return u;
 		}
-		return false;
+		return null;
 	}
 	
 }
